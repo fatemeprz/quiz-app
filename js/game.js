@@ -11,6 +11,7 @@ const nextButton=document.querySelector("#next")
 
 let isAccepted=true
 let CORRECT_BOUNS=10
+let score=0
 
 // const answer=document.querySelector(".answers")
 
@@ -46,7 +47,6 @@ async function getData() {
 const start=()=>{
     showQuestions()
     // score()
-    scoreText.innerText=localStorage.getItem("score")
     loder.style.display="none";
     container.style.display="block"
 }
@@ -58,6 +58,7 @@ const fail=()=>{
 }
 
 const showQuestions=()=>{
+    scoreText.innerText=score
     questionNumber.innerText=questionIndex+1
     const {question,answers,correctAnswerIndex}=
         formatedData[questionIndex]
@@ -139,7 +140,7 @@ const answerHandeler=(event,index)=>{
 
     // }
     const isCorrect=index===correctAnswer ? true : false
-    score(isCorrect)
+    calcutescore(isCorrect)
 
     if(isCorrect){
         event.target.classList.add("correct")
@@ -155,26 +156,28 @@ const answerHandeler=(event,index)=>{
     
 }
 
-const score=(userChoice)=>{
+const calcutescore=(userChoice)=>{
 
-    // scoreText.innerText=localStorage.getItem("score")
+    
 
     if (!isAccepted) return;
     isAccepted=false
-    console.log(isAccepted);
+    
     if(userChoice){
-        let scoreNumber= localStorage.getItem("score") 
-        scoreNumber= +scoreNumber+CORRECT_BOUNS 
-        localStorage.setItem("score",scoreNumber)
-        scoreText.innerText=localStorage.getItem("score")
+         
+        // scoreNumber= +scoreNumber+CORRECT_BOUNS 
+        score+=CORRECT_BOUNS
+        // localStorage.setItem("score",scoreNumber)
+        // scoreText.innerText=localStorage.getItem("score")
+        scoreText.innerText=score
         return
 
     }
-    else if(userChoice){
-        // localStorage.setItem("score",scoreCount)
-        scoreText.innerText=localStorage.getItem("score")
-        return
-    }
+    // else {
+    //     // localStorage.setItem("score",scoreCount)
+    //     // scoreText.innerText=localStorage.getItem("score")
+    //     return
+    // }
         
 
     
@@ -195,6 +198,7 @@ const nextHandeler=()=>{
 
         showQuestions()
         removeClasses()
+        isAccepted=true
     }else{
         window.location.assign("../html/endPage.html")
         
