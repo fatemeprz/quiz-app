@@ -7,6 +7,8 @@ const answerList=document.querySelectorAll(".answer")
 const questionNumber=document.querySelector("#question-no")
 const scoreText=document.querySelector("#score-count")
 const finishBtn=document.querySelector("#finish")
+const nextButton=document.querySelector("#next")
+
 let isAccepted=true
 let CORRECT_BOUNS=10
 
@@ -35,7 +37,7 @@ async function getData() {
     }
     catch(error){
         console.log(error);
-        fail()
+        // fail()
 
     }
     
@@ -56,6 +58,7 @@ const fail=()=>{
 }
 
 const showQuestions=()=>{
+    questionNumber.innerText=questionIndex+1
     const {question,answers,correctAnswerIndex}=
         formatedData[questionIndex]
     correctAnswer=correctAnswerIndex;
@@ -176,12 +179,30 @@ const score=(userChoice)=>{
 
     
 }
+const removeClasses=()=>{
+    answerList.forEach(answer=>{
+        answer.classList="answer"
+    })
+}
 const finishHandeler=()=>{
     localStorage.setItem("score",0)
 }
 
+const nextHandeler=()=>{
+
+    questionIndex++
+    if(questionIndex<formatedData.length){
+
+        showQuestions()
+        removeClasses()
+    }else{
+        window.location.assign("../html/endPage.html")
+        
+    }
+}
 
 window.addEventListener("load",getData)
+nextButton.addEventListener("click",nextHandeler)
 answerList.forEach((butten,index)=>butten.addEventListener("click",(event)=>answerHandeler(event,index)))
 finishBtn.addEventListener("click",finishHandeler)
 
