@@ -5,6 +5,8 @@ const container=document.querySelector(".container")
 const questionText=document.querySelector(".question-text")
 const answerList=document.querySelectorAll(".answer")
 const questionNumber=document.querySelector("#question-no")
+const scoreText=document.querySelector("#score-count")
+const finishBtn=document.querySelector("#finish")
 
 // const answer=document.querySelector(".answers")
 
@@ -15,6 +17,8 @@ let correctAnswer=null
 
 questionNumber.innerText=questionIndex+1
 async function getData() {
+    // scoreText.innerText=0;
+
     try{
 
         const res=await fetch(ULR)
@@ -36,8 +40,8 @@ async function getData() {
 }
 
 const start=()=>{
-    
     showQuestions()
+    score()
     loder.style.display="none";
     container.style.display="block"
 }
@@ -129,11 +133,13 @@ const answerHandeler=(event,index)=>{
 
     // }
     const isCorrect=index===correctAnswer ? true : false
+    score(isCorrect)
     if(isCorrect){
         event.target.classList.add("correct")
     }else{
         event.target.classList.add("incorrect")
         answerList[correctAnswer].classList.add("correct")
+
         
     }
     // console.dir(event.target.textContent)
@@ -141,8 +147,35 @@ const answerHandeler=(event,index)=>{
     // console.log(formatedData[questionIndex].answers[correctAnswer]);
     
 }
+let scoreCount=0
+const score=(userChoice)=>{
+
+    scoreText.innerText=localStorage.getItem("score")
+    
+    if(userChoice){
+        let scoreNumber= localStorage.getItem("score") 
+        scoreNumber= +scoreNumber+10
+        localStorage.setItem("score",scoreNumber)
+        scoreText.innerText=localStorage.getItem("score")
+        return
+
+    }
+    else if(userChoice){
+        // localStorage.setItem("score",scoreCount)
+        scoreText.innerText=localStorage.getItem("score")
+        return
+    }
+        
+
+    
+}
+const finishHandeler=()=>{
+    localStorage.setItem("score",0)
+}
 
 
 window.addEventListener("load",getData)
 answerList.forEach((butten,index)=>butten.addEventListener("click",(event)=>answerHandeler(event,index)))
+finishBtn.addEventListener("click",finishHandeler)
+
 // answerList.forEach(item=>item.addEventListener("click",answerHandeler))
