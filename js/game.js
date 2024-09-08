@@ -7,6 +7,8 @@ const answerList=document.querySelectorAll(".answer")
 const questionNumber=document.querySelector("#question-no")
 const scoreText=document.querySelector("#score-count")
 const finishBtn=document.querySelector("#finish")
+let isAccepted=true
+let CORRECT_BOUNS=10
 
 // const answer=document.querySelector(".answers")
 
@@ -41,7 +43,8 @@ async function getData() {
 
 const start=()=>{
     showQuestions()
-    score()
+    // score()
+    scoreText.innerText=localStorage.getItem("score")
     loder.style.display="none";
     container.style.display="block"
 }
@@ -134,6 +137,7 @@ const answerHandeler=(event,index)=>{
     // }
     const isCorrect=index===correctAnswer ? true : false
     score(isCorrect)
+
     if(isCorrect){
         event.target.classList.add("correct")
     }else{
@@ -147,14 +151,17 @@ const answerHandeler=(event,index)=>{
     // console.log(formatedData[questionIndex].answers[correctAnswer]);
     
 }
-let scoreCount=0
+
 const score=(userChoice)=>{
 
-    scoreText.innerText=localStorage.getItem("score")
-    
+    // scoreText.innerText=localStorage.getItem("score")
+
+    if (!isAccepted) return;
+    isAccepted=false
+    console.log(isAccepted);
     if(userChoice){
         let scoreNumber= localStorage.getItem("score") 
-        scoreNumber= +scoreNumber+10
+        scoreNumber= +scoreNumber+CORRECT_BOUNS 
         localStorage.setItem("score",scoreNumber)
         scoreText.innerText=localStorage.getItem("score")
         return
