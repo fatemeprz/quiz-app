@@ -9,6 +9,7 @@ const scoreText=document.querySelector("#score-count")
 const finishBtn=document.querySelector("#finish")
 const nextButton=document.querySelector("#next")
 
+
 let isAccepted=true
 let CORRECT_BOUNS=10
 let score=0
@@ -147,7 +148,7 @@ const answerHandeler=(event,index)=>{
     }else{
         event.target.classList.add("incorrect")
         answerList[correctAnswer].classList.add("correct")
-
+        
         
     }
     // console.dir(event.target.textContent)
@@ -188,7 +189,8 @@ const removeClasses=()=>{
     })
 }
 const finishHandeler=()=>{
-    localStorage.setItem("score",0)
+    window.location.assign("../html/endPage.html")
+    localStorage.setItem("score",JSON.stringify(score))
 }
 
 const nextHandeler=()=>{
@@ -200,10 +202,11 @@ const nextHandeler=()=>{
         removeClasses()
         isAccepted=true
     }else{
-        window.location.assign("../html/endPage.html")
-        
+        finishHandeler()
     }
 }
+
+
 
 window.addEventListener("load",getData)
 nextButton.addEventListener("click",nextHandeler)
