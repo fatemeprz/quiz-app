@@ -9,6 +9,7 @@ const scoreText=document.querySelector("#score-count")
 const finishBtn=document.querySelector("#finish")
 const nextButton=document.querySelector("#next")
 const level=JSON.parse(localStorage.getItem("level"))
+const error=document.querySelector(".error")
 
 let isAccepted=true
 let CORRECT_BOUNS=10
@@ -41,7 +42,7 @@ async function getData() {
     }
     catch(error){
         console.log(error);
-
+        fail()
     }
     
 }
@@ -52,7 +53,14 @@ const start=()=>{
     loder.style.display="none";
     container.style.display="block"
 }
+const fail=()=>{
+    container.style.display="none";
+    error.style.display="block"
+    loder.style.display="none"
+    
 
+
+}
 const showQuestions=()=>{
     scoreText.innerText=score
     questionNumber.innerText=questionIndex+1

@@ -97,7 +97,16 @@
     display: inline-block;
     
 }
-
+.error{
+    display: none;
+    text-align: center;
+    height: 100vh;
+    align-content: center;
+}
+.error h3{
+    
+    margin-top: 40px;
+}
 @keyframes load{
     0%{
         transform:rotate(0deg)
