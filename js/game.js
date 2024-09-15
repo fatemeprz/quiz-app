@@ -8,14 +8,17 @@ const questionNumber=document.querySelector("#question-no")
 const scoreText=document.querySelector("#score-count")
 const finishBtn=document.querySelector("#finish")
 const nextButton=document.querySelector("#next")
-
+const level=JSON.parse(localStorage.getItem("level"))
 
 let isAccepted=true
 let CORRECT_BOUNS=10
-let score=0
+let score=0;
+let ULR="https://opentdb.com/api.php?amount=10&difficulty=medium&type=multiple"
 
+level ?  ULR=`https://opentdb.com/api.php?amount=10&difficulty=${level}&type=multiple` : ULR
 
-const ULR="https://opentdb.com/api.php?amount=10&difficulty=medium&type=multiple"
+localStorage.removeItem("level")
+
 let formatedData=null
 let questionIndex=0
 let correctAnswer=null
@@ -31,6 +34,7 @@ async function getData() {
         formatedData=formatData(data.results)
         console.log(formatedData)
         start()
+
         
         
         
@@ -44,6 +48,7 @@ async function getData() {
 
 const start=()=>{
     showQuestions()
+    localStorage.removeItem("level")
     loder.style.display="none";
     container.style.display="block"
 }
