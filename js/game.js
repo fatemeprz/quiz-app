@@ -31,14 +31,9 @@ async function getData() {
 
         const res=await fetch(ULR)
         const data=await res.json()
-        console.log(data)
         formatedData=formatData(data.results)
-        console.log(formatedData)
         start()
 
-        
-        
-        
     }
     catch(error){
         console.log(error);
