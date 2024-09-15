@@ -46,12 +46,10 @@
 .question-text{
     background-color: var(--text-color);
     color: var(--back-color);
-    height: 60px;
+    height: 70px;
     align-content: center;
     font-size: 18px;
-    padding-left: 18px;
-    padding-right: 8px;
-
+    padding: 5px 8px 5px 18px;
     border-radius: 20px;
     margin-top: 60px;
     margin-bottom: 35px;

@@ -1,3 +1,51 @@
 .item{
-    height: 200px;
+    height: 230px;
+}
+.scores{
+    /* visibility: visible; */
+    width: 450px;
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    background-color: #fff;
+    margin-bottom: 15px;
+    color:var(--text-color);
+    font-size: 1.1rem;
+    text-align: center;
+    align-content: center;
+    border-radius: 15px;
+    padding: 12px 22px;
+    
+}
+.name{
+    display: flex;
+    
+    
+}
+.name-number{
+    background-color: var(--text-color);
+    color: #fff;
+    padding:4px 5px;
+    width: 25px;
+    border-radius: 8px;
+    margin-right: 30px;
+}
+.name-user{
+
+    color:#000;
+    align-content: center;
+
+}
+.score{
+    background-color:#eeecec;
+    color: var(--text-color);
+    text-align: center;
+    border-radius: 8px;
+    width: 30px;
+    padding:6px 6px;
+    /* height: 20px; */
+
+
 }
