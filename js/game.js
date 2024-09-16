@@ -1,4 +1,5 @@
 import formatData from "./helper.js"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const loder=document.querySelector(".loder")
 const container=document.querySelector(".container")
