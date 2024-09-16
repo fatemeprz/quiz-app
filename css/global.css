@@ -80,3 +80,20 @@ body{
     margin-bottom: 60px;
 
 }
+
+@media (max-width:480px){
+    .scores{
+        width: 250px;
+    }
+    .links-level{
+        margin-right: 50px;
+        margin-left: 50px;
+
+    }
+    #level-dificulty{
+        font-size: 1.5rem;
+    }
+    .question-text{
+       height: 140px;
+    }
+}

@@ -11,8 +11,6 @@
     color: var(--text-color);
     font-weight: 600;
     /* background-color: blue; */
-    
-
 }
 .count{
     background-color: var(--back-color);
@@ -134,4 +132,18 @@
 }
 .incorrect:hover{
     background-color: #fe6681;
+}
+@media (max-width:480px){
+    .question-text{
+        height: 200px;
+     }
+     .top-header{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+     }
+     .answer{
+        height: 70px;
+     }
+     
 }
