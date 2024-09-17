@@ -106,7 +106,7 @@ const removeClasses=()=>{
 }
 
 const finishHandeler=()=>{
-    window.location.assign("../html/endPage.html")
+    window.location.assign("./endPage.html")
     localStorage.setItem("score",JSON.stringify(score))
 }
 

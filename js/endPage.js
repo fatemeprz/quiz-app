@@ -19,7 +19,7 @@ const save=()=>{
         highScores.splice(10)
         localStorage.setItem("highScores",JSON.stringify(highScores))
         localStorage.removeItem("score")
-        window.location.assign("../html/index.html")
+        window.location.assign("./index.html")
         
     }
 

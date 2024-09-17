@@ -16,7 +16,7 @@ const levelHandeler=(event,index)=>{
             break
         }
 
-        window.location.assign("../html/game.html")
+        window.location.assign("./game.html")
 
         
         localStorage.setItem("level",JSON.stringify (deficultyLevel))
